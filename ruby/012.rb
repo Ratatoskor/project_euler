@@ -1,33 +1,30 @@
-def all_factors(num)
-
-  i=2
-  factors =[]
-  factors.push(1)
-  while i<num
-    if num%i==0
-      factors.push(i)
+def number_divisors(number)
+  count=0
+  div = 1
+  while div<=number**0.5
+    if number%div ==0
+      count +=2
     end
-      i+=1
+  div+=1
   end
-  factors.push(num)
-  return factors.length
-
+  puts "#{number} #{count}"
+  return count
 end
 
-
-def div_triangle_number(num_div)
-
-  current_num = 1
-  div_count=0
-  i=1
-  while div_count<500
-    i+=1
-    current_num=current_num+i
-    div_count = all_factors(current_num)
-    puts current_num
-    puts div_count
+def triangle_num(num)
+  inf = 1/0.0
+  number = 0
+  (1..inf).each do |x|
+    number = (x*(x+1)/2)
+    if number%2==0
+      if number_divisors(number)>=num
+        return x
+      end
+    end
   end
-
 end
 
-div_triangle_number(500)
+puts triangle_num(500)
+
+
+puts number_divisors(76576500)
