@@ -37,10 +37,5 @@ def fibonacci(num)
   while <=num
 
   sum = f1+f2
-
-
   end
-
-
-
 end
