@@ -32,7 +32,7 @@ puts (2*3*5*7*11*13*17*19)
 # 0<=number. If it isn't then it multiples PRODUCT by the largest prime factor
 
 def lprimefactor(number)
-  i=2                      #Set counter to two, since all prime numbers >=2
+  i=2             #Set counter to two, since all prime numbers >=2
   while i<number
     if number%i == 0      #If modulus isn't 0, then i is a factor
       number = number/i   #Divide off that factor from the number
