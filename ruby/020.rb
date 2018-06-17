@@ -1,3 +1,4 @@
+#Factorial digit sum
 =begin
 
 Problem 20
@@ -12,8 +13,9 @@ Find the sum of the digits in the number 100!
 
 =end
 
-  factorial = 1
+#returns factorial of the input number
 def factorial(number)
+  factorial = 1   #Otherwise, function will multiply by 0
 
   if number==0
     return 1
@@ -23,13 +25,15 @@ def factorial(number)
   return factorial
 end
 
-result = factorial(100)
+#Returns sum of individual digits of the factorial of num
+def sum_factorial_digits(num)
+  arr_numbers = factorial(num).to_s.split(//)
 
-arr_numbers = result.to_s.split(//)
-
-sum = 0
-arr_numbers.each do |x|
-  sum += x.to_i
+  sum = 0
+    arr_numbers.each do |x|
+    sum += x.to_i
+  end
+  puts sum
 end
 
-puts sum
+sum_factorial_digits(100)

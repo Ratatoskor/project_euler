@@ -1,3 +1,4 @@
+#Amicable numbers
 
 =begin
 Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
@@ -7,13 +8,18 @@ For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 a
 
 Evaluate the sum of all the amicable numbers under 10000.
 =end
+
 ARR=[]
+# Returns an array with proper divisors of the input value num
 def proper_divisors(num)
-  divisors = []
+
+  divisors = [1]      #Includes 1, since it is a divisors for every number
     if num==1
       return divisors
     end
-  (1...num).each do |x|
+
+  #Iterates up to (exclusive) num and finds proper divisors
+  (2...num).each do |x|
     if num%x == 0
       divisors << x
     end
@@ -36,6 +42,7 @@ def amicable_numbers?(num1, num2)
 
 end
 =end
+
 def amicable_numbers?(num1)
   num1_divisors = proper_divisors(num1)
   num2 = num1_divisors.inject(:+)
