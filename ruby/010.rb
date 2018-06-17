@@ -1,18 +1,21 @@
+#Summation of primes
+
+=begin
+
+The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+
+Find the sum of all the primes below two million
+
+=end
+
 def is_prime(number)
 
-  if number <2      #All primes are >=2
-    return false
-  elsif number == 2 #Check for only even prime
-    return true
-  end
-
-  i=3                #No need to check for even primes after 2
+ i=3                #No need to check for even primes after 2
   while i<=number**0.5
-    if number%i==0
-      return false
-    end
+    return false if number%i==0
     i+=2             #No need to check for even primes after 2
   end
+
   return true
 end
 
@@ -26,7 +29,6 @@ def sum_of_primes(number)
   i=3
   while i<=number.to_i
     if is_prime(i)
-      puts i
       sum = sum + i
     end
     i+=2

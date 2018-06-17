@@ -1,17 +1,6 @@
+#Longest Collatz Sequence
+
 =begin
-
-
-
-    About
-    Archives
-    Recent
-    News
-    Register
-    Sign In
-
-Search ProblemsRSS Feed
-Longest Collatz sequence
-Problem 14
 
 The following iterative sequence is defined for the set of positive integers:
 
@@ -27,19 +16,20 @@ Which starting number, under one million, produces the longest chain?
 
 NOTE: Once the chain starts the terms are allowed to go above one million.
 
-
-Project Euler: Copyright Information | Privacy Policy
-
 =end
-HASH={}
 
+#Store all caculated collatz lengths in a cache to speed up program
+CACHE={}
+
+#Takes input number and returns the length of the collatz sequence
 def collatz_length(num)
-    input = num
+  input = num
   count = 1
   while num != 1
-    if HASH.include?(num)
-      count += HASH[num]
-      num = 1
+    #First, look for number in CACHE
+    if CACHE.include?(num)
+      count += CACHE[num]
+      break
     elsif num%2==0
       num = num/2
     else
@@ -48,13 +38,14 @@ def collatz_length(num)
     count +=1
   end
 
-  if !HASH.include?(input)
-    HASH[input] = count
+  #If number isn't in CACHE, add it
+  if !CACHE.include?(input)
+    CACHE[input] = count
   end
   count
 end
 
-
+#Checks numbers from 1..num and returns number with longest collatz sequence
 def longest_collatz(num)
   sequence = 0
   value = 0

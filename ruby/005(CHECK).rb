@@ -1,35 +1,13 @@
+#Smallest Multiple
 
-#Don't have to check for 1-10, since 2*(any n<10) <=20
-#Increment by the largest number!
 =begin
-i=20
-while true
-  if (i%11==0 &&
-     i%12==0 &&
-     i%13==0 &&
-     i%14==0 &&
-     i%15==0 &&
-     i%16==0 &&
-     i%17==0 &&
-     i%18==0 &&
-     i%19==0 &&
-     i%20==0)
-     break
-  else
-    i+=20
-  end
-end
-puts i
-puts (2*3*5*7*11*13*17*19)
+
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
 =end
 
-## Using Prime factorization:
-
-#Find the largest prime factorization:
-#lprimefactor finds the largest prime factor of a number
-#smallest_multiple checks to see if PRODUCT is evenly divisible by
-# 0<=number. If it isn't then it multiples PRODUCT by the largest prime factor
 
 def lprimefactor(number)
   i=2             #Set counter to two, since all prime numbers >=2

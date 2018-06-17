@@ -1,3 +1,5 @@
+#Maximum path sum I
+
 =begin
 
 By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
@@ -33,16 +35,17 @@ NOTE: As there are only 16384 routes, it is possible to solve this problem by tr
 
 
 
-
+#This method compares each number with its neighbor(s), and adds the higher number to a new array
 def compare_neighbor(arr)
-  index = 1
+  #Always compare with right neighbord, comparison starts at arr[0]
+  index = 0
   highest_neighbors = []
 
-  while index < arr.length
-    if arr[index] > arr[index-1]
+  while index < arr.length-1       #arr.last has already been compared to its only neighbor
+    if arr[index] > arr[index+1]
       highest_neighbors << arr[index]
     else
-      highest_neighbors << arr[index-1]
+      highest_neighbors << arr[index+1]
     end
     index +=1
   end

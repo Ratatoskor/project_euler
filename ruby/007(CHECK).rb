@@ -17,17 +17,23 @@ def is_prime(number)
 end
 
 
-def x_prime(number)
+def x_prime(n)
   count =1
-  i=1
-  while count<number
-    i+=2
+  i=0
+  while count<=n
     if is_prime(i)
       count+=1
     end
+
+    if i%2==0
+      i+=1
+    else
+      i+=2
+    end
+
   end
   puts i
 end
 
 
-puts x_prime(10001)
+x_prime(10001)
