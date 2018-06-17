@@ -60,6 +60,3 @@ def is_leapyear?(year)
   return true if year%4==0 && year%100!=0
   return false
 end
-
-
-puts (31-7)%7
