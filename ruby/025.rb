@@ -29,19 +29,20 @@ What is the index of the first term in the Fibonacci sequence to contain 1000 di
 
 =end
 
-  sum = 0
+#Generates nth digit of fibonacci
+@cache = {}; @cache[1]=1; @cache[2]=1
+def fibonacci(n)
+  @cache[n] ||= fibonacci(n-1)+fibonacci(n-2)
+end
 
-def fibonacci(num)
-  if idx=0
-  f1 = 1
-  f2 = 1
-  end
-  sum = f1 + f2
-  f1 = f2
-  f2 = sum
+def fibonacci_digits(max)
 
-
+  (1..1/0.0).each do |num|
+    length = fibonacci(num).to_s.length
+    return num if length >= max
+   end
 
 end
 
-puts fibonacci()
+
+puts fibonacci_digits(1000)

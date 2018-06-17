@@ -1,4 +1,4 @@
-#Amicable numbers
+#AMICABLE NUMBERS
 
 =begin
 Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
@@ -9,62 +9,43 @@ For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 a
 Evaluate the sum of all the amicable numbers under 10000.
 =end
 
-ARR=[]
 # Returns an array with proper divisors of the input value num
-def proper_divisors(num)
+def proper_divs(num)
+  divisors = []
 
-  divisors = [1]      #Includes 1, since it is a divisors for every number
-    if num==1
-      return divisors
-    end
-
-  #Iterates up to (exclusive) num and finds proper divisors
-  (2...num).each do |x|
-    if num%x == 0
-      divisors << x
-    end
+  (1...num).each do |x|
+    divisors << x if num%x == 0
   end
 
-  return divisors
+  divisors
 end
 
-#Takes one number, finds sum of proper divisors, and checks to see if that number is amicable
-=begin
-def amicable_numbers?(num1, num2)
-  num1_divisors = proper_divisors(num1)
-  num2_divisors = proper_divisors(num2)
-
-  puts num1_divisors.inject(:+)
-  puts num2_divisors.inject(:+)
-  if num1_divisors.inject(:+) == num2 && num2_divisors.inject(:+) == num1
-    return true
-  end
-
-end
-=end
-
-def amicable_numbers?(num1)
-  num1_divisors = proper_divisors(num1)
-  num2 = num1_divisors.inject(:+)
-  num2_divisors = proper_divisors(num2)
-  num_compare = num2_divisors.inject(:+)
+# Checks to see if num1 has an amicable number, it true, it adds both numbers to amicables (array)
+def amicable_number?(num1, amicables)
+  num1_divs   = proper_divs(num1)
+  num2        = num1_divs.inject(:+)
+  num2_divs   = proper_divs(num2)
+  num_compare = num2_divs.inject(:+)
 
   if (num1 == num_compare && num1!=num2)
-    if !ARR.include?(num1) && !ARR.include?(num2)
-      ARR << num1
-      ARR << num2
+    if !amicables.include?(num1) && !amicables.include?(num2)
+      amicables << num1
+      amicables << num2
     end
   end
 
-  return 0
+  return
 end
 
-
+# Outputs sum of all amicable numbers up to max (non-inclusive)
 def sum_amicables(max)
+  amicables = []
+
   (2...max).each do |x|
-    amicable_numbers?(x)
+    amicable_number?(x, amicables)
   end
-  puts ARR.inject(:+)
+
+  puts amicables.inject(:+)
 end
 
 sum_amicables(10000)
