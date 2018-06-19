@@ -1,9 +1,22 @@
+#DOUBLE-BASED PALINDROME
+
+=begin
+
+The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
+
+Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.
+
+(Please note that the palindromic number, in either base, may not include leading zeros.)
+
+=end
+
+
 #Returns true is input is palindrome. Returns false if it isn't.
 def is_palindrome?(number)
   string = number.to_s
-  low = 0
-  high = string.length-1
-  i = 0
+  low    = 0
+  high   = string.length-1
+  i      = 0
 
   #Check until markers meet in middle. If all comparisons are true, then the input is a palindrome
   while (low+i) < (high-i)
@@ -43,4 +56,4 @@ def double_based_palindrome(max)
 end
 
 
-puts "Sum: " + double_based_palindrome(10000000).to_s
+puts "Sum: " + double_based_palindrome(1000000).to_s

@@ -23,7 +23,7 @@ def is_prime?(number)
   return true
 end
 
-#Returns true is all digits are odd, false if they aren't
+#Returns true if all digits are odd, false if they aren't
 #Also returns true if first digit is 2 and rest are odd
 def all_digits_odd?(number)
   number.to_s.split(//).each_with_index do |digit,index|
@@ -75,14 +75,9 @@ def truncatable_primes
       end
     end
 
-    if index%2==0
-      index += 1
-    else
-      index += 2
+    index += 2
     end
-
-  end
   puts trunc_primes.inject(:+)
 end
 
-puts truncatable_primes
+truncatable_primes
